@@ -4,7 +4,8 @@ package sample1.controller;
  * import java.io.*; - ライブラリの読み込み
  * これを読み込むことによってPrintWriter等が使えるようになる
  */
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,7 +61,7 @@ public class IndexController extends HttpServlet {
 		out.println("<div class=\"container\">");
 		out.println("<h1>SAMPLE1</h1>");
 		out.println("<a href=\"/sample_jsp_servlet/sample1/login\"><button class=\"btn btn-primary\">LOGIN</button></a>");
-		out.println("<a href=\"/sample_jsp_servlet/sample1/signup\"><button class=\"btn btn-light\">LOGIN</button></a>");
+		out.println("<a href=\"/sample_jsp_servlet/sample1/signup\"><button class=\"btn btn-light\">SIGNUP</button></a>");
 		out.println("</div>");
 		out.println("</body>");
 		out.println("</html>");
