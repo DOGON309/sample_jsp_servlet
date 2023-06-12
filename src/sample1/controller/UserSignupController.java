@@ -1,5 +1,9 @@
 package sample1.controller;
 
+/*
+ * import java.io.*; - ライブラリの読み込み
+ * これを読み込むことによってPrintWriter等が使えるようになる
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,11 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/sample1/login")
-public class UserLoginController extends HttpServlet {
+@WebServlet("/sample1/signup")
+public class UserSignupController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UserLoginController() {
+    public UserSignupController() {
         super();
     }
 
@@ -43,7 +47,6 @@ public class UserLoginController extends HttpServlet {
 		 *
 		 */
 		PrintWriter out = response.getWriter();
-
 		/*
 		 * --Java
 		 * out - PrintWriterクラスが入ってる変数
@@ -51,14 +54,14 @@ public class UserLoginController extends HttpServlet {
 		 */
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>sample1_login</title>");
+		out.println("<title>sample1_singup</title>");
 		out.println("<link rel=\"stylesheet\" href=\"/sample_jsp_servlet/css/bootstrap.css\"");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<script src=\"/sample_jsp_servlet/js/bootstrap.min.js\"></script>");
 		out.println("<div class=\"container\">");
-		out.println("<h1>LOGIN</h1>");
-		out.println("<form action=\"/sample_jsp_servlet/sample1/login\" method=\"post\">");
+		out.println("<h1>SIGNUP</h1>");
+		out.println("<form action=\"/sample_jsp_servlet/sample1/signup\" method=\"post\">");
 		out.println("<div class=\"input-group mb-3\">");
 		out.println("<span class=\"input-group-text\">USERNAME</span>");
 		out.println("<input class=\"form-control\" type=\"text\" name=\"username\" placeholder=\"Username\" minlength=3 maxlength=16 required>");
@@ -67,7 +70,7 @@ public class UserLoginController extends HttpServlet {
 		out.println("<span class=\"input-group-text\">PASSWORD</span>");
 		out.println("<input class=\"form-control\" type=\"password\" name=\"password\" placeholder=\"Password\" minlength=6 maxlength=32 required>");
 		out.println("</div>");
-		out.println("<button class=\"btn btn-primary\" type=\"button\">ログイン</button>");
+		out.println("<button class=\"btn btn-primary\" type=\"button\">サインアップ</button>");
 		out.println("<a href=\"/sample_jsp_servlet/sample1\"><button class=\"btn btn-secondary\" type=\"button\">キャンセル</button></a>");
 		out.println("</form>");
 		out.println("</div>");
@@ -76,7 +79,6 @@ public class UserLoginController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

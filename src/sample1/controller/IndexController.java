@@ -4,8 +4,7 @@ package sample1.controller;
  * import java.io.*; - ライブラリの読み込み
  * これを読み込むことによってPrintWriter等が使えるようになる
  */
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
