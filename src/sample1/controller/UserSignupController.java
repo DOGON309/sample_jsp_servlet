@@ -63,6 +63,16 @@ public class UserSignupController extends HttpServlet {
 		 */
 		PrintWriter out = response.getWriter();
 		/*
+		 *
+		 */
+		HttpSession session = request.getSession(false);
+		/*
+		 *
+		 */
+		if (session != null) {
+			session.invalidate();
+		}
+		/*
 		 * --Java
 		 * out - PrintWriterクラスが入ってる変数
 		 * Println - PrintWriterクラスに入ってるprintln()関数 … System.out.println()とは違うよ…
@@ -148,19 +158,18 @@ public class UserSignupController extends HttpServlet {
 		 */
 		if (username.isEmpty()) {
 			message.add("ユーザー名を入力してください");
-		}else if (username.matches("[!-~]{3,16}")) {
+		}else if (!username.matches("[!-~]{3,16}")) {
 			message.add("ユーザー名を正しく入力してください");
 		}
 		if (password.isEmpty()) {
 			message.add("パスワードを入力してください");
-		}else if (password.matches("[!-~]{6,32}")) {
+		}else if (!password.matches("[a-z]{6,32}")) {
 			message.add("パスワードを正しく入力してください");
 		}
 		/*
 		 *message変数にエラー文が入ってないか確認する
 		 *List.size()でList型の変数内に何個の要素が入っているかを判別する
 		 */
-		System.out.println(message.size());
 		if (message.size() == 0) {
 			/*
 			 * SQLとのセッションを始める時にエラーが出ていないか判別するために
@@ -196,14 +205,20 @@ public class UserSignupController extends HttpServlet {
 				conn.close();
 				pstmt.close();
 
-				HttpSession session = request.getSession(false);
+				HttpSession session = request.getSession(true);
 
-				if (session != null) {
-					session.invalidate();
-				}
+				session.setAttribute("userid", num);
 
-
-
+				out.println("<html>");
+				out.println("<head>");
+				out.println("<title>sample1_home</title>");
+				out.println("<link rel=\"stylesheet\" href=\"css/bootstrap.css\">");
+				out.println("</head>");
+				out.println("<body>");
+				out.println("<script src=\"js/bootstrap.min.js\"></script>");
+				out.println("<h2>HOME</h2>");
+				out.println("</body>");
+				out.println("</html>");
 			}catch (ClassNotFoundException e) {
 
 				out.println("ClassNotFoundException:" + e.getMessage());
